@@ -1,24 +1,40 @@
 package polynomial_group;
 
 public class LinkedList {
-	public Node _head; /////////data field
+	public Node head; //data field
 	
-	public LinkedList() { ////////constructor
-		_head = null;
+	public LinkedList() { //constructor
+		head = null;
 	}
 	
-	public LinkedList(int data) { /////////constructor overloaded
-		_head = new Node(data, null);
+	public LinkedList(int coefficient, int exponent ) { //constructor overloaded
+		head = new Node(coefficient, exponent, null);
 	}
 	
-	public boolean isEmpty() { ///////checks if there is a linked list created 
-		return _head == null;
+	public boolean isEmpty() { //checks if there is a linked list created 
+		return head == null;
 	}
 	
 	public void deleteAllNodes() { // deletes the linked list
-		_head = null;
+		head = null;
 	}
 	
+	public void addNode(int coefficient, int exponent) {
+		Node currNode =	head;
+		Node newNode = new Node(coefficient, exponent, null);
+		while (currNode != null) {
+			currNode = currNode.next;
+		}
+		currNode = newNode;
+	}
+	public int getCoefficient() {
+		return head.coefficient;
+	}
+	public int getExponent() {
+		return head.exponent;
+	}
+	
+	/*
 	public void displayList() { // prints the linked list
 		Node curr = _head;
 		int num = 0;
@@ -51,7 +67,8 @@ public class LinkedList {
 		
 		return true;
 	}
-
+	*/
+	/*
 	public Node insertNode(int index, int x) {
 		if (index < 0) return null;	
 		
@@ -74,7 +91,9 @@ public class LinkedList {
 		}
 		return newNode;
 	}
-	
+	*/
+
+	/*
 	public void insert(int index, int newItem1, int newItem2) {
 		Node newNode1 = new Node();
 		Node newNode2 = new Node();
@@ -147,4 +166,5 @@ public class LinkedList {
 		}
 		return 0;
 	}
+	*/
 }

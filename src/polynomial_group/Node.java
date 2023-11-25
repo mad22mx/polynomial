@@ -1,11 +1,14 @@
 package polynomial_group;
 
 public class Node {
-	public int _data;
-	public Node _next;
+	public int coefficient;
+	public int exponent;
+	public Node next;
 	
-	public Node(int data, Node next) {
-		_data = data;
-		_next = next;
+	public Node(int coefficient, int exponent, Node next) {
+		this.coefficient = coefficient;
+		this.exponent = exponent;
+		this.next = next;
 	}
+	
 }
