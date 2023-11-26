@@ -5,6 +5,10 @@ public class Node {
 	public int exponent;
 	public Node next;
 	
+	public Node() {
+		
+	}
+	
 	public Node(int coefficient, int exponent, Node next) {
 		this.coefficient = coefficient;
 		this.exponent = exponent;
