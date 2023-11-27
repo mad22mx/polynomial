@@ -32,8 +32,6 @@ public class LinkedList {
             currNode.next = newNode;
         }
     }
-
-	
 	
 	public void displayList() { // prints the linked list
 		Node curr = head;
@@ -41,7 +39,7 @@ public class LinkedList {
 		
 		System.out.print("The list is: ");
 		while(curr != null) {
-			System.out.print(curr.coefficient + curr.exponent + " ");
+			System.out.print(curr.coefficient + "x^"+ curr.exponent + " ");
 			curr = curr.next;
 			num++;
 		}
