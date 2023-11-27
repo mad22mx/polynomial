@@ -1,5 +1,8 @@
 package polynomial_group;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Polynomial {
 	public LinkedList list;
 	public Polynomial() {
@@ -107,25 +110,37 @@ public class Polynomial {
 	    	}
 	    	currNode1 = currNode1.next;
 	    }
-	    multiplied.list.displayList();
-	    System.out.println();
+	    //multiplied.list.displayList();
+	    //System.out.println();
 	    
 	    //combining like terms to give the final result
-	    /*
-	     * 
-	     * 
-	     * 
-	     * 
-	     * 
-	     * 
-	     * 
-	     * 
-	     * 
-	     * 
-	     */
-	    
-		return result;
-	}
+        HashMap<Integer, Integer> resultMap = new HashMap<>();
+
+        Node multipliedNode = multiplied.list.head;
+        while (multipliedNode != null) {
+            int exponent = multipliedNode.exponent;
+            int coefficient = multipliedNode.coefficient;
+
+            if (resultMap.containsKey(exponent)) {
+                // Exponent already exists, add coefficients
+                int currentCoefficient = resultMap.get(exponent);
+                resultMap.put(exponent, currentCoefficient + coefficient);
+            } else {
+                // Exponent doesn't exist, add new entry
+                resultMap.put(exponent, coefficient);
+            }
+
+            multipliedNode = multipliedNode.next;
+        }
+
+        // Create the final result polynomial
+        for (Map.Entry<Integer, Integer> entry : resultMap.entrySet()) {
+            result.addNode(entry.getValue(), entry.getKey());
+        }
+
+        return result;
+    }
+	
 	static void print(Polynomial p) {
 		Node currNode = p.list.head;
 		if(currNode == null) {
@@ -140,10 +155,11 @@ public class Polynomial {
 		}
 		
 		while(currNode != null) {
+			
 			if(currNode.coefficient > 0) {
 				System.out.print(" + " + currNode.coefficient + "x^" + currNode.exponent);
 			}
-			else {
+			else if(currNode.coefficient < 0) {
 				System.out.print(currNode.coefficient + "x^" + currNode.exponent);
 			}
 			currNode = currNode.next;
