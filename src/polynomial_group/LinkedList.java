@@ -32,6 +32,31 @@ public class LinkedList {
             currNode.next = newNode;
         }
     }
+    public static void deleteNode(LinkedList list, int coefficient, int exponent) {
+        Node currNode = list.head;
+        Node prevNode = null;
+
+        // If the node to be deleted is the head
+        if (currNode != null && currNode.coefficient == coefficient && currNode.exponent == exponent) {
+            list.head = currNode.next;
+            return;
+        }
+
+        // Search for the node to be deleted ... keza kelele wede tach yhedal
+        while (currNode != null && (currNode.coefficient != coefficient || currNode.exponent != exponent)) {
+            prevNode = currNode;
+            currNode = currNode.next;
+        }
+
+        // If the node with the given coefficient and exponent is not found
+        if (currNode == null) {
+            System.out.println("Node not found in the list");
+            return;
+        }
+
+        // Unlink the node from the linked list
+        prevNode.next = currNode.next;
+    }
 	
 	public void displayList() { // prints the linked list
 		Node curr = head;

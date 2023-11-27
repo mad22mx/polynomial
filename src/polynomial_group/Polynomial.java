@@ -50,6 +50,8 @@ public class Polynomial {
 	        }
 	        currNode2 = currNode2.next;
 	    }
+	    //Delete node if has 0
+        LinkedList.deleteNode(p.list, 0, 0);
 
 	    return p;
 	}
@@ -90,6 +92,8 @@ public class Polynomial {
 	        }
 	        currNode2 = currNode2.next;
 	    }
+	    //Delete node if has 0
+        LinkedList.deleteNode(p.list, 0, 0);
 
 	    return p;
 	}
@@ -110,6 +114,9 @@ public class Polynomial {
 	    	}
 	    	currNode1 = currNode1.next;
 	    }
+	    //for debugging
+	    //Delete node if has 0
+        //LinkedList.deleteNode(multiplied.list, 0, 0);
 	    //multiplied.list.displayList();
 	    //System.out.println();
 	    
@@ -126,8 +133,8 @@ public class Polynomial {
                 int currentCoefficient = resultMap.get(exponent);
                 resultMap.put(exponent, currentCoefficient + coefficient);
             } else {
-                // Exponent doesn't exist, add new entry
-                resultMap.put(exponent, coefficient);
+                
+                resultMap.put(exponent, coefficient); // Exponent doesn't exist buhala eziga add yderegal
             }
 
             multipliedNode = multipliedNode.next;
@@ -137,6 +144,8 @@ public class Polynomial {
         for (Map.Entry<Integer, Integer> entry : resultMap.entrySet()) {
             result.addNode(entry.getValue(), entry.getKey());
         }
+        //Delete node if has 0
+        LinkedList.deleteNode(result.list, 0, 0);
 
         return result;
     }
